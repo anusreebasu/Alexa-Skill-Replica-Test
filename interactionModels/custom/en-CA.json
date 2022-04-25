@@ -1,0 +1,124 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "weather  app",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CheckTemperature",
+          "slots": [
+            {
+              "name": "city",
+              "type": "AMAZON.City",
+              "samples": [
+                "look for the temperature in {city}",
+                "I am in {city}"
+              ]
+            }
+          ],
+          "samples": [
+            "is it hot in {city} today",
+            "tell me the temperature in {city} at present",
+            "how much is the temperature in {city} now",
+            "what is the current temperature in {city}"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CheckTemperature",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.561374566840"
+          },
+          "slots": [
+            {
+              "name": "city",
+              "type": "AMAZON.City",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.122230080058.819712676209",
+                "elicitation": "Elicit.Slot.122230080058.819712676209"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.122230080058.819712676209",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "please specify city name?"
+          },
+          {
+            "type": "PlainText",
+            "value": "which city shall I look for?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.122230080058.819712676209",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "shall I look for temperature in {city}"
+          },
+          {
+            "type": "PlainText",
+            "value": "you want to know the temperature in {city}, is that correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.561374566840",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you wish to know the temperature in {city} ?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "3"
+}

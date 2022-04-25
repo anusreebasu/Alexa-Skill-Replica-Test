@@ -1,0 +1,111 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "application météo",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CheckTemperature_Fr",
+          "slots": [
+            {
+              "name": "ville",
+              "type": "AMAZON.City",
+              "samples": [
+                "Je suis dans {ville}",
+                "recherchez la température dans {ville}"
+              ]
+            }
+          ],
+          "samples": [
+            "quelle est la température actuelle dans {ville}",
+            "combien est la température dans {ville} maintenant",
+            "dites-moi la température dans {ville} à l\u0027heure actuelle",
+            "est-il chaud dans {ville} aujourd\u0027hui"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CheckTemperature_Fr",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.337662896158"
+          },
+          "slots": [
+            {
+              "name": "ville",
+              "type": "AMAZON.City",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.337662896158.173422131555",
+                "elicitation": "Elicit.Slot.337662896158.173422131555"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.337662896158.173422131555",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Quelle ville dois-je rechercher?"
+          },
+          {
+            "type": "PlainText",
+            "value": "veuillez préciser le nom de la ville?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.337662896158.173422131555",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "vous voulez connaître la température en ville, est-ce exact?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Dois-je chercher la température dans {ville}"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.337662896158",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Voulez-vous connaître la température dans {ville} ?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "6"
+}
